@@ -85,9 +85,7 @@ test.each`type                        | operation                               
   `
   (({operation, error}) => {
     let thrownValue;
-    const operation = () => resource.foo = 1;
 
-    expect(operation).toThrowError(new Error(error));
     act(() => {
       ReactDOM.createRoot(<SuspenseMock onThrow={thrown => thrownValue = thrown}><Operation operation={operation} /></SuspenseMock>, container)
     })
@@ -111,6 +109,7 @@ const
   // invocation
   // all Proxy handlers
   // Json stringify
+  // Array.isArray
 // Perhaps add an inspect handler for debugging
 // Store operations done on primitive and apply lazily
 // suspends rendering until promise is resolved and resumes with resolved value
